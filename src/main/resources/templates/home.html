@@ -1,0 +1,39 @@
+<html>
+<body>
+{{^user}}
+<form action="/login" method="post">
+    <input type="text" placeholder="Username" name="userName" required/>
+    <input type="password" placeholder="Password" name="password" required/>
+    <button type="submit">Login</button>
+</form>
+<form action="/newuser" method="post">
+    <input type="text" placeholder="Username" name="userName" required/>
+    <input type="password" placeholder="Password" name="password" required/>
+    <button type="submit">Create User</button>
+</form>
+
+{{/user}}
+
+{{#user}}
+Welcome, {{name}}!
+<form action="/logout" method="post">
+    <button type="submit">Logout</button>
+</form>
+
+<br><br>
+
+<ol>
+    {{#todos}}
+    <li>{{todoText}} <a href="/deleteToDo?todoID={{id}}">Delete</a></li>
+    {{/todos}}
+</ol>
+
+<form action = "/addToDo" method="post">
+    <input type ="text" placeholder="ToDo to Add" name = "todoText" required>
+    <button type = "submit">Add ToDo</button>
+</form>
+
+
+{{/user}}
+</body>
+</html>
