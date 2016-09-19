@@ -1,6 +1,14 @@
 <html>
+<!--
+{{! changing the mustache delimiter so it doesn't conflict with  }}
+{{! the default angularjs delimeters - https://mustache.github.io/mustache.5.html for more info  }}
+{{=<% %>=}}
+--->
 <body>
-{{^user}}
+<%^user%>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="js/tiy-ng-controller.js"></script>
+
 <form action="/login" method="post">
     <input type="text" placeholder="Username" name="userName" required/>
     <input type="password" placeholder="Password" name="password" required/>
@@ -12,12 +20,12 @@
     <button type="submit">Create User</button>
 </form>
 
-{{/user}}
+<%/user%>
 <img src="http://adorablekittens.com/wp-content/uploads/2015/08/cat2.jpg" width="300" height="200">
 <br><br>
 
-{{#user}}
-Welcome, {{name}}!
+<%#user%>
+Welcome, <%name%>!
 
 <form action="/logout" method="post">
     <button type="submit">Logout</button>
@@ -26,9 +34,9 @@ Welcome, {{name}}!
 <br><br>
 
 <ol>
-    {{#todos}}
-    <li>{{todoText}} <a href="/deleteToDo?todoID={{id}}">Delete</a></li>
-    {{/todos}}
+    <%#todos%>
+    <li><%todoText%> <a href="/deleteToDo?todoID=<%id%>">Delete</a></li>
+    <%/todos%>
 </ol>
 
 <form action = "/addToDo" method="post">
@@ -37,6 +45,6 @@ Welcome, {{name}}!
 </form>
 
 
-{{/user}}
+<%/user%>
 </body>
 </html>

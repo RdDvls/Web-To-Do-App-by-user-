@@ -13,7 +13,40 @@ public class ToDoItem {
     @GeneratedValue
     int id;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public String getTodoText() {
+        return todoText;
+    }
+
+    public void setTodoText(String todoText) {
+        this.todoText = todoText;
+    }
+
+    public boolean isDone() {
+        return isDone;
+    }
+
+    public void setDone(boolean done) {
+        isDone = done;
+    }
+
     @ManyToOne
+
     User user;
 
     @Column(nullable = false)
